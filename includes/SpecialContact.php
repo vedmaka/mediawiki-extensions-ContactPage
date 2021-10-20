@@ -122,6 +122,12 @@ class SpecialContact extends UnlistedSpecialPage {
 			$formText = $this->msg( 'contactpage-pagetext' )->parseAsBlock();
 		}
 
+		// overrides subject from `subject` GET request
+		$subjectOverride = $this->getRequest()->getText( 'subject', false );
+		if ( $subjectOverride ) {
+			$subject = $subjectOverride;
+		}
+
 		$subject = trim( $subject );
 
 		if ( $subject === '' ) {
